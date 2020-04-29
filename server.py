@@ -84,7 +84,7 @@ class Server(object):
             'The room is all glass, but with no openings other than the door you used.',
             'Brown wallpaper covers all surfaces, including the floor.',
             'The room is short, just barely comfortable enough to stand in. The walls are covered in green carpet.'
-            ]
+            ][room_number]
 
     def greet(self):
         """
@@ -139,21 +139,22 @@ class Server(object):
         """
 
         if self.room == 0 and argument == 'north':
-            self.room == 3
+            self.room = 3
         elif self.room == 0 and argument == 'west':
-            self.room == 1
+            self.room = 1
         elif self.room == 0 and argument == 'east':
-            self.room == 2
+            self.room = 2
         elif self.room == 1 and argument == 'east':
-            self.room == 0
+            self.room = 0
         elif self.room == 2 and argument == 'west':
-            self.room == 0
+            self.room = 0
         elif self.room == 3 and argument == 'south':
-            self.room == 0
+            self.room = 0
         else:
             self.output_buffer = 'There is no path that way.'
         
         self.output_buffer = self.room_description(self.room)
+
 
     def say(self, argument):
         """
@@ -207,7 +208,7 @@ class Server(object):
             'quit': self.quit,
             'say': self.say,
             'move': self.move
-        }[command](arguements)
+        }[command](arguments)
             
         
     def push_output(self):
